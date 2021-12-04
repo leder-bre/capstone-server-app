@@ -6,10 +6,6 @@ block content
   p Welcome to #{title}
   div(id='graph')
   script(type="text/javascript").
-    var timestamps = "#{timestamps}";
-    var values = "#{values}";
-    console.log("timesamps");
-    console.log(timestamps);
     var margin = {top: 50, right: 20, bottom: 60, left: 90},
     width = 600 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
@@ -79,8 +75,8 @@ block content
         console.log(d['VALUE']);
       });
       //using imported data to define extent of x and y domains
-      x.domain(d3.extent(data, function(d) { return timestamps; }));
-      y.domain(d3.extent(data, function(d) { return values; }));
+      x.domain(d3.extent(data, function(d) { return d.date; }));
+      y.domain(d3.extent(data, function(d) { return d.total_km; }));
 
     // Draw the y Grid lines
       svg.append("g")            

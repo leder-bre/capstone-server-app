@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
   //     console.log(values);
       
   //   });
-    res.render('index', {title: 'Express', timestamps, values});
+    res.render('index', { title: 'Express' });
 });
 
 module.exports = router;
