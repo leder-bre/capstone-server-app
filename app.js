@@ -66,3 +66,34 @@ var layout = {
 Plotly.newplot('myDiv', [{
   y:getData(), type:'line'
 }], layout); //I don't know what myDiv is supposed to be
+
+/*
+function getData(){
+  return Math.random();
+}
+
+var layout = {
+  title: "Water Level Measurements",
+  xaxis: {
+    title: "Time Elapsed"
+  },
+  yaxis: {
+    title: "Water Level"
+  }
+};
+
+var counter = 0;
+
+Plotly.newPlot('myDiv', [{y:[getData()], type:'line'}], layout);
+
+setInterval(function () {
+  Plotly.extendTraces("myDiv", { y: [[getData()]] },[0]);
+  counter++;
+  
+  if(counter > 60) {
+    Ploty.relayOut('myDiv',{
+      xaxis:{range:[counter - 60, counter]}
+    });
+  }
+}, 100);
+*/
