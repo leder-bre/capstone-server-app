@@ -91,7 +91,7 @@ setInterval(function () {
   counter++;
   
   if(counter > 60) {
-    Ploty.relayOut('myDiv',{
+    Plotly.relayOut('myDiv',{
       xaxis:{range:[counter - 60, counter]}
     });
   }
