@@ -51,3 +51,18 @@ myPort.on('data', receiveData); //Right now printing out on command line
 function receiveData(data){
   console.log(data);
 }
+
+//Work in progress using plotly.js to graph live data
+var layout = {
+  title: 'Water Level Measurements',
+  xaxis: {
+    title: 'Time Elapsed'
+  },
+  yaxis: {
+    title: 'Water Level'
+  }
+};
+
+Plotly.newplot('myDiv', [{
+  y:getData(), type:'line'
+}], layout); //I don't know what myDiv is supposed to be
