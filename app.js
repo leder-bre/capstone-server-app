@@ -39,3 +39,15 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+//Work in progress for reading data from arduino from usb serial port, requires "serialport" module from npm
+//This seems to read data live from the arduino port(ie. reads what the arduino sends out based on set rate)
+var serialport = require("serialport");
+var SerialPort = serialport.SerialPort;
+var portName = process.argv[2]; //This requires you to input port on command line so prob need to change it, need to know the comport and replace the process.argv[2] line
+Var myPort = new SerialPort(portName, {baudrate:9600, parser:serialport.parsers.readline("\r\n")});
+
+myPort.on('data', receiveData); //Right now printing out on command line
+function receiveData(data){
+  console.log(data);
+}
