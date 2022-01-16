@@ -53,6 +53,10 @@ function receiveData(data){
 }
 
 //Work in progress using plotly.js to graph live data
+function getData(){
+  return data;//Want to return the data received from the serial port, should be just the waterlevel only
+}
+
 var layout = {
   title: 'Water Level Measurements',
   xaxis: {
@@ -63,15 +67,24 @@ var layout = {
   }
 };
 
-Plotly.newplot('myDiv', [{
-  y:getData(), type:'line'
-}], layout); //I don't know what myDiv is supposed to be
+var counter = 0;
+Plotly.newPlot('myDiv', [{y:[getData()], type:'line'}], layout);
+
+setInterval(function () {
+  Plotly.extendTraces("myDiv", { y: [[getData()]] },[0]);
+  counter = counter + 1;
+  
+  if(counter > 60){
+    Plotly.relayout('myDiv',{
+      xaxis:{range:[counter - 60, counter]}
+    });
+  }
+}, 1000);
 
 /*
 function getData(){
   return Math.random();
 }
-
 var layout = {
   title: "Water Level Measurements",
   xaxis: {
@@ -81,19 +94,17 @@ var layout = {
     title: "Water Level"
   }
 };
-
 var counter = 0;
-
 Plotly.newPlot('myDiv', [{y:[getData()], type:'line'}], layout);
 
 setInterval(function () {
   Plotly.extendTraces("myDiv", { y: [[getData()]] },[0]);
-  counter++;
+  counter = counter + 1;
   
-  if(counter > 60) {
-    Plotly.relayOut('myDiv',{
+  if(counter > 60){
+    Plotly.relayout('myDiv',{
       xaxis:{range:[counter - 60, counter]}
     });
   }
-}, 100);
+}, 1000);//its in ms so 1000 is 1 s
 */
