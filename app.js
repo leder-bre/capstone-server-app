@@ -76,7 +76,7 @@ setInterval(function () {
   
   if(counter > 60){
     Plotly.relayout('myDiv',{
-      xaxis:{range:[counter - 60, counter]}
+      xaxis:{range:[counter - 60, counter], title: "Time Elapsed"}
     });
   }
 }, 1000);
@@ -103,7 +103,7 @@ setInterval(function () {
   
   if(counter > 60){
     Plotly.relayout('myDiv',{
-      xaxis:{range:[counter - 60, counter]}
+      xaxis:{range:[counter - 60, counter], title: "Time Elapsed"}
     });
   }
 }, 1000);//its in ms so 1000 is 1 s
