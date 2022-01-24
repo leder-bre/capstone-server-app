@@ -3,7 +3,7 @@ extends layout
 block content
   link(rel='stylesheet', href='/stylesheets/d3.css')
   h1= title
-  p Welcome to #{title}
+  p Welcome to Water Level Monitor
   div(id='graph')
   script(type="text/javascript").
     var margin = {top: 50, right: 20, bottom: 60, left: 90},
@@ -64,7 +64,7 @@ block content
     }
 
     //reading in CSV which contains data
-    d3.csv("/DB_V2.csv", function(error, data) {
+    d3.csv("/database/DB_V2.csv", function(error, data) {
       data.forEach(function(d) {
         console.log(d);
         console.log(d['TIME'])
