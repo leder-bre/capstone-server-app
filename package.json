@@ -16,6 +16,7 @@
     "http-errors": "~1.6.3",
     "jade": "^0.29.0",
     "morgan": "~1.9.1",
+    "plotly": "^1.0.6",
     "serialport": "^9.2.8"
   }
 }
