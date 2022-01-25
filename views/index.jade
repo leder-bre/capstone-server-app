@@ -9,15 +9,20 @@ block content
     var counter = 0;
     var graph_x = "#{graph_x}".split(',');
     var graph_y = "#{graph_y}".split(',');
-    function getX() {
-      counter++;
-      return counter;
-    }
-    function getY() {
-      return Math.random();
-    }
-    Plotly.newPlot('plotlygraph', [{
-      x: graph_x,
-      y: graph_y,
-      type: 'line'
-    }]);
+    
+    var data = [
+      {
+        x: graph_x,
+        y: graph_y,
+        type: "scatter"
+      }
+    ];
+    var layout = {
+      filename: "date-axes",
+      fileopt: "overwrite",
+      title: 'Tank 1'
+    };
+
+    Plotly.newPlot('plotlygraph', data, layout, function (err, msg) {
+      console.log(msg);
+    });
