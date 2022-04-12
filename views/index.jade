@@ -4,25 +4,61 @@ block content
   link(rel='stylesheet', href='/stylesheets/d3.css')
   h1= title
   p Welcome to Water Level Monitor
-  div(id='plotlygraph')
+  div(id='plotlygraph1')
+  div(id='plotlygraph2')
+  div(id='plotlygraph3')
   script(type="text/javascript").
     var counter = 0;
-    var graph_x = "#{graph_x}".split(',');
-    var graph_y = "#{graph_y}".split(',');
+    var graph1_x = "#{graph1_x}".split(',');
+    var graph1_y = "#{graph1_y}".split(',');
+    var graph2_x = "#{graph2_x}".split(',');
+    var graph2_y = "#{graph2_y}".split(',');
+    var graph3_x = "#{graph3_x}".split(',');
+    var graph3_y = "#{graph3_y}".split(',');
     
-    var data = [
+    var data1 = [
       {
-        x: graph_x,
-        y: graph_y,
+        x: graph1_x,
+        y: graph1_y,
         type: "scatter"
       }
     ];
-    var layout = {
+    var data2 = [
+      {
+        x: graph2_x,
+        y: graph2_y,
+        type: "scatter"
+      }
+    ];
+    var data3 = [
+      {
+        x: graph3_x,
+        y: graph3_y,
+        type: "scatter"
+      }
+    ];
+    var layout1 = {
       filename: "date-axes",
       fileopt: "overwrite",
       title: 'Tank 1'
     };
+    var layout2 = {
+      filename: "date-axes",
+      fileopt: "overwrite",
+      title: 'Tank 2'
+    };
+    var layout3 = {
+      filename: "date-axes",
+      fileopt: "overwrite",
+      title: 'Tank 3'
+    };
 
-    Plotly.newPlot('plotlygraph', data, layout, function (err, msg) {
+    Plotly.newPlot('plotlygraph1', data1, layout1, function (err, msg) {
+      console.log(msg);
+    });
+    Plotly.newPlot('plotlygraph2', data2, layout2, function (err, msg) {
+      console.log(msg);
+    });
+    Plotly.newPlot('plotlygraph3', data3, layout3, function (err, msg) {
       console.log(msg);
     });
